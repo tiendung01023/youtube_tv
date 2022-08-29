@@ -1,11 +1,13 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:youtube_tv/modules/components/contact_page.dart';
-import 'package:youtube_tv/modules/components/home_page.dart';
-import 'package:youtube_tv/modules/components/link_with_code_page.dart';
-import 'package:youtube_tv/modules/components/link_with_wifi_page.dart';
+import 'package:youtube_tv/modules/pages/contact_page.dart';
+import 'package:youtube_tv/modules/pages/home_page.dart';
+import 'package:youtube_tv/modules/pages/language_page.dart';
+import 'package:youtube_tv/modules/pages/link_with_code_page.dart';
+import 'package:youtube_tv/modules/pages/link_with_wifi_page.dart';
 
 typedef MyAppBar = PreferredSizeWidget Function({String? title, List<Widget>? actions});
 
@@ -53,6 +55,11 @@ class _AppState extends State<App> {
             appBar: _appBar,
             drawer: drawer,
           );
+        case 4:
+          return LanguagePage(
+            appBar: _appBar,
+            drawer: drawer,
+          );
         default:
           return const SizedBox();
       }
@@ -76,7 +83,7 @@ class _AppState extends State<App> {
 
   PreferredSizeWidget _appBar({String? title, List<Widget>? actions}) {
     return AppBar(
-      title: Text(title ?? "Youtube TV"),
+      title: Text(title ?? tr('app_name')),
       backgroundColor: Colors.red,
       actions: actions,
     );
@@ -119,10 +126,11 @@ class _AppState extends State<App> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _item(0, "Trang chủ"),
-            _item(1, "Liên kết bằng mã TV"),
-            _item(2, "Liên kết với Wi-Fi"),
-            _item(3, "Liên hệ"),
+            _item(0, tr('page_home_title')),
+            _item(1, tr('page_link_with_code_title')),
+            _item(2, tr('page_link_with_wifi_title')),
+            _item(3, tr('page_contact_title')),
+            _item(4, tr('page_language_title')),
           ],
         ),
       ),

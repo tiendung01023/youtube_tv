@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_tv/modules/app_screen.dart';
 
@@ -15,16 +16,16 @@ class LinkWithWifiPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
-      appBar: appBar(title: 'Liên kết với Wi-Fi'),
+      appBar: appBar(title: tr('page_link_with_wifi_title')),
       drawer: drawer,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _text("1. Hãy kết nối điện thoại với cùng mạng Wi-Fi mà thiết bị này đang sử dụng."),
-              _text("2. Mở ứng dụng YouTube trên điện thoại."),
-              _text("3. Nhấn vào biểu tượng truyền rồi chọn thiết bị này."),
+              _text(tr('page_link_with_wifi_guide_1')),
+              _text(tr('page_link_with_wifi_guide_2')),
+              _text(tr('page_link_with_wifi_guide_3')),
             ],
           ),
         ),

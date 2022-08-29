@@ -1,0 +1,21 @@
+{
+    "app_name": "Youtube TV",
+    "page_home_title": "Trang chủ",
+    "page_link_with_code_title": "Liên kết bằng mã TV",
+    "page_link_with_code_guide_1":"1. Trên điện thoại, hãy mở ứng dụng YouTube.",
+    "page_link_with_code_guide_2":"2. Nhấn vào biểu tượng Chromecast.",
+    "page_link_with_code_guide_3":"3. Nhấn vào “Liên kết bằng mã TV” rồi nhập mã vào phần bên dưới.",
+    "page_link_with_code_error_get_code": "An error occurred while retrieving the code",
+    "page_link_with_wifi_title": "Liên kết với Wi-Fi",
+    "page_link_with_wifi_guide_1":"1. Hãy kết nối điện thoại với cùng mạng Wi-Fi mà thiết bị này đang sử dụng.",
+    "page_link_with_wifi_guide_2":"2. Mở ứng dụng YouTube trên điện thoại.",
+    "page_link_with_wifi_guide_3":"3. Nhấn vào biểu tượng truyền rồi chọn thiết bị này.",
+    "page_contact_title": "Gửi phản hồi",
+    "page_language_title": "Ngôn ngữ",
+    "page_language_guide": "Tùy chọn này làm thay đổi ngôn ngữ của ứng dụng. Các video vẫn giữ nguyên ở ngôn ngữ gốc nếu người sáng tạo không cung cấp bản dịch.",
+    "language": {
+        "en" : "English (US)",
+        "vi": "Tiếng Việt"
+    },
+    "version_title": "Phiên bản: {}"
+}

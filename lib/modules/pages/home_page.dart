@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (controller) => _controller = controller,
           navigationDelegate: (navigation) {
-            Log.d('[_AppState][navigationDelegate] ${navigation.url}');
+            Log.d('[HomePage][navigationDelegate] ${navigation.url}');
             return NavigationDecision.navigate;
           },
         ),
@@ -58,17 +58,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _reload() async {
-    Log.d('[App][_reload] run');
+    Log.d('[HomePage][_reload] run');
     await _controller?.loadUrl(widget.tvUrl);
   }
 
   Future<void> _setScreenId() async {
-    Log.d('[App][_setScreenId] run');
+    Log.d('[HomePage][_setScreenId] run');
     try {
       final res =
           await _controller?.runJavascriptReturningResult("window.localStorage['yt.leanback.default::yt_mdx_screen']");
       if (res != null && res != '') {
-        Log.d('[App][_setScreenId] data: $res');
+        Log.d('[HomePage][_setScreenId] data: $res');
         dynamic resDecode = jsonDecode(res);
         Map<String, dynamic> resMap;
         if (resDecode is String) {
@@ -78,14 +78,14 @@ class _HomePageState extends State<HomePage> {
         } else {
           resMap = {};
         }
-        Log.json(resMap, header: '[App][_setScreenId]');
+        Log.json(resMap, header: '[HomePage][_setScreenId]');
 
         final screenId = resMap['data']?['screenId'] as String?;
         final loungeToken = resMap['data']?['loungeToken'] as String?;
         widget.updateWebInfo(screenId, loungeToken);
       }
     } catch (e) {
-      Log.e('[App][_setScreenId] $e');
+      Log.e('[HomePage][_setScreenId] $e');
     }
   }
 }

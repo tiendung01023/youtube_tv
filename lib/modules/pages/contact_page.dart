@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -17,7 +18,7 @@ class ContactPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
-      appBar: appBar(title: 'Liên hệ'),
+      appBar: appBar(title: tr('page_contact_title')),
       drawer: drawer,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -63,7 +64,7 @@ class ContactPage extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
           child: Text(
-            "Phiên bản: $version",
+            tr('version_title', args: [version]),
             style: const TextStyle(
               color: Colors.white,
               height: 24 / 18,

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_tv/modules/app_screen.dart';
 import 'package:youtube_tv/utils/log.dart';
@@ -37,7 +38,7 @@ class _LinkWithCodePageState extends State<LinkWithCodePage> {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: widget.appBar(
-        title: 'Liên kết bằng mã TV',
+        title: tr('page_link_with_code_title'),
         actions: [
           IconButton(
             onPressed: () => _loadNewCode(),
@@ -49,13 +50,13 @@ class _LinkWithCodePageState extends State<LinkWithCodePage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: widget.screenId == null
-              ? _text("Có lỗi trong khi lấy mã")
+              ? _text(tr('page_link_with_code_error_get_code'))
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _text("1. Trên điện thoại, hãy mở ứng dụng YouTube."),
-                    _text("2. Nhấn vào biểu tượng Chromecast."),
-                    _text("3. Nhấn vào \"Liên kết bằng mã TV\" rồi nhập mã vào phần bên dưới."),
+                    _text(tr('page_link_with_code_guide_1')),
+                    _text(tr('page_link_with_code_guide_2')),
+                    _text(tr('page_link_with_code_guide_3')),
                     const SizedBox(height: 8),
                     _codeWidget(),
                     Image.network(
@@ -104,7 +105,7 @@ class _LinkWithCodePageState extends State<LinkWithCodePage> {
   }
 
   void _loadNewCode() {
-    Log.d('[App][_loadNewCode] run');
+    Log.d('[LinkWithCodePage][_loadNewCode] run');
     _getTVLinkCodeApi().then((value) {
       setState(() {
         _code = value;
@@ -113,10 +114,10 @@ class _LinkWithCodePageState extends State<LinkWithCodePage> {
   }
 
   Future<String?> _getTVLinkCodeApi() async {
-    Log.d('[App][_getTVLinkCodeApi] run');
+    Log.d('[LinkWithCodePage][_getTVLinkCodeApi] run');
     try {
       if (widget.screenId == null) {
-        Log.e('[App][_getTVLinkCodeApi] screenId is null');
+        Log.e('[LinkWithCodePage][_getTVLinkCodeApi] screenId is null');
         return null;
       }
       final dio = Dio();
@@ -126,7 +127,7 @@ class _LinkWithCodePageState extends State<LinkWithCodePage> {
         options: Options(headers: {'Content-Type': 'application/x-www-form-urlencoded'}),
         data: {
           'access_type': 'permanent',
-          'screen_name': 'YoutubeTV',
+          'screen_name': tr('app_name'),
           'screen_id': widget.screenId,
           'lounge_token': widget.loungeToken,
         },
@@ -136,7 +137,7 @@ class _LinkWithCodePageState extends State<LinkWithCodePage> {
         return data;
       }
     } catch (e) {
-      Log.e('[App][_getTVLinkCodeApi] $e');
+      Log.e('[LinkWithCodePage][_getTVLinkCodeApi] $e');
     }
     return null;
   }

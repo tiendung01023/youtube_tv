@@ -1,0 +1,21 @@
+{
+    "app_name": "Youtube TV",
+    "page_home_title": "Home",
+    "page_link_with_code_title": "Link with TV code",
+    "page_link_with_code_guide_1":"1. On your phone, open the YouTube app.",
+    "page_link_with_code_guide_2":"2. Tap the Chromecast icon.",
+    "page_link_with_code_guide_3":"3. Tap “Link with TV code” and enter the code below.",
+    "page_link_with_code_error_get_code": "An error occurred while retrieving the code",
+    "page_link_with_wifi_title": "Link with Wi-Fi",
+    "page_link_with_wifi_guide_1":"1. On your phone, connect to the same Wi-Fi network as this device.",
+    "page_link_with_wifi_guide_2":"2. Open the YouTube app on your phone.",
+    "page_link_with_wifi_guide_3":"3. Tap the cast icon and select this device.",
+    "page_contact_title": "Send feedback",
+    "page_language_title": "Language",
+    "page_language_guide": "This changes the language of the app. Videos remain in their original language unless the creator provides translations.",
+    "language": {
+        "en" : "English (US)",
+        "vi": "Tiếng Việt"
+    },
+    "version_title": "Version: {}"
+}
