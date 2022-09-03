@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:youtube_tv/modules/pages/contact_page.dart';
 import 'package:youtube_tv/modules/pages/home_page.dart';
 import 'package:youtube_tv/modules/pages/language_page.dart';
@@ -19,21 +16,13 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  static const _tvUrl = 'https://youtube.com/tv';
   String? _screenId;
   String? _loungeToken;
 
   int _currentIndexDrawer = 0;
 
   @override
-  void initState() {
-    super.initState();
-    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    CookieManager().clearCookies();
     final drawer = _drawer(context);
 
     Widget otherPage() {
@@ -51,12 +40,15 @@ class _AppState extends State<App> {
             drawer: drawer,
           );
         case 3:
-          return ContactPage(
+          return LanguagePage(
             appBar: _appBar,
             drawer: drawer,
+            onChange: () => setState(() {
+              _currentIndexDrawer = 0;
+            }),
           );
         case 4:
-          return LanguagePage(
+          return ContactPage(
             appBar: _appBar,
             drawer: drawer,
           );
@@ -68,10 +60,11 @@ class _AppState extends State<App> {
     return Stack(
       children: [
         HomePage(
+          key: Key('https://youtube.com/tv?hl=${context.locale.languageCode}'),
+          tvUrl: 'https://youtube.com/tv?hl=${context.locale.languageCode}',
           appBar: _appBar,
-          tvUrl: _tvUrl,
           drawer: drawer,
-          updateWebInfo: (screenId, loungeToken) {
+          updateWebInfo: (screenId, loungeToken, cookies) {
             _screenId = screenId;
             _loungeToken = loungeToken;
           },
@@ -129,8 +122,9 @@ class _AppState extends State<App> {
             _item(0, tr('page_home_title')),
             _item(1, tr('page_link_with_code_title')),
             _item(2, tr('page_link_with_wifi_title')),
-            _item(3, tr('page_contact_title')),
-            _item(4, tr('page_language_title')),
+            Divider(color: Colors.grey[50]),
+            _item(3, tr('page_language_title')),
+            _item(4, tr('page_contact_title')),
           ],
         ),
       ),
